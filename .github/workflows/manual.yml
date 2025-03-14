@@ -1,0 +1,52 @@
+name: Manual operation
+
+on:
+  workflow_dispatch:
+    inputs:
+      flutter_channel:
+        default: 'beta'
+        required: true
+        type: choice
+        options:
+          - beta
+          - master
+          - stable
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Set Up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: ${{ inputs.flutter_channel }}
+          cache: true
+
+      - name: Install Dependencies
+        run: flutter pub get
+        shell: bash
+
+      - name: Checking flutter
+        run: flutter doctor --verbose
+        shell: bash
+
+      - name: Analyze project source
+        run: dart analyze
+        shell: bash
+
+      - name: Build EXE
+        run: flutter build windows
+        shell: bash
+
+      - name: Archive EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows
+          path: |
+            build/windows/x64/runner/Release/**
+          overwrite: true
+          compression-level: 9
+          retention-days: 2
