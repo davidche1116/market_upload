@@ -31,13 +31,39 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  flutter_localizations:
+    sdk: flutter
+
+  # 主题切换
+  adaptive_theme: ^3.7.0
+  # 跨平台文件XFile
+  cross_file: ^0.3.4+2
+  # 哈希加密
+  crypto: ^3.0.6
+  # 苹果图标
   cupertino_icons: ^1.0.8
+  # 网络请求
+  dio: ^5.8.0+1
+  # 网络请求日志打印
+  #dio_http_formatter: ^3.3.0
+  # RSA加密
+  encrypt: ^5.0.3
+  # 文件选择
+  file_picker: ^9.1.0
+  # 日志打印
+  logger: ^2.5.0
+  # 解析APK文件，需要配置Android SDK目录
+  parser_apk_info: ^1.0.1
+  # 跨平台目录操作
+  path: ^1.9.1
+  # 证书加密
+  pointycastle: ^4.0.0
+  # 设置持久化存储
+  shared_preferences: ^2.5.2
+  # 窗口控制
+  window_manager: ^0.4.3
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -45,6 +71,10 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+
+
+dependency_overrides:
+  pointycastle: ^4.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
