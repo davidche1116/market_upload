@@ -22,23 +22,18 @@ jobs:
 
       - name: Install Dependencies
         run: flutter pub get
-        shell: bash
-
-      - name: Checking flutter
-        run: flutter doctor --verbose
-        shell: bash
-
-      - name: Analyze project source
-        run: dart analyze
-        shell: bash
 
       - name: Install flutter_distributor
         run: dart pub global activate flutter_distributor
-        shell: bash
+
+      - name: Checking flutter
+        run: flutter doctor --verbose
+
+      - name: Analyze project source
+        run: dart analyze
 
       - name: Build ZIP
         run: flutter_distributor package --platform windows --targets zip
-        shell: bash
 
       - name: Archive ZIP
         uses: actions/upload-artifact@v4
